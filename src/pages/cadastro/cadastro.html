@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar color="dark">
+    <ion-title>cadastro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="register()" [formGroup]="cadastroForm">
+    <ion-item>
+      <ion-icon name="person" item-left></ion-icon>
+      <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="at" item-left></ion-icon>
+      <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" item-left></ion-icon>
+      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock" item-left></ion-icon>
+      <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+    </ion-item>
+    <br>
+    <button color="dark" ion-button full type="submit" [disabled]="cadastroForm.invalid">Criar conta</button>
+  </form>
+</ion-content>

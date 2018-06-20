@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-img style="width: 100px; height: 100px;" src="assets/imgs/logo.png"></ion-img>
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <ion-item>
+      <ion-label floating>Email Address</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <button ion-button full color="dark" type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+  <button ion-button full color="dark" (click)="cadastro()">Register</button>
+</ion-content>
