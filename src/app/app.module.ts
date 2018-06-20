@@ -1,3 +1,4 @@
+import { PerfilPage } from './../pages/perfil/perfil';
 import { OneSignal } from '@ionic-native/onesignal';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -18,6 +19,11 @@ import { AuthProvider } from '../providers/auth/auth.provider';
 import { BaseProvider } from '../providers/base/base.provider';
 import { LoginPage } from '../pages/login/login';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { ModifyLoggedHeaderComponent } from '../components/modify-logged-header/modify-logged-header';
+import { CapitalizePipe } from '../pipes/capitalize/capitalize.pipe';
+import { UserMenuComponent } from '../components/user-menu/user-menu';
+import { UserInfoComponent } from '../components/user-info/user-info';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 var config = {
   apiKey: "AIzaSyARcvkxhjma2xuT_8vDLaLvUUm6RnApqFg",
@@ -30,10 +36,16 @@ var config = {
 
 @NgModule({
   declarations: [
+    CapitalizePipe,
     MyApp,
+    ModifyLoggedHeaderComponent,
+    UserMenuComponent,
+    UserInfoComponent,    
+    ProgressBarComponent,
     HomePage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    PerfilPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +60,8 @@ var config = {
     MyApp,
     HomePage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    PerfilPage
   ],
   providers: [
     StatusBar,
