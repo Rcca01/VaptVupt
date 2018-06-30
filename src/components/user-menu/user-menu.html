@@ -3,8 +3,16 @@
   <user-info [user]="currentUser" [isMenu]="true"></user-info>
 
   <ion-list no-lines>
+    <button ion-item  icon-right detail-none menuClose="user-menu" (click)="onHomePage()">
+      HomePage
+      <ion-icon name="person" item-end></ion-icon>
+    </button>
     <button ion-item  icon-right detail-none menuClose="user-menu" (click)="onProfile()">
       Perfil
+      <ion-icon name="person" item-end></ion-icon>
+    </button>
+    <button ion-item  icon-right detail-none menuClose="user-menu" (click)="onChat()">
+      Chat
       <ion-icon name="person" item-end></ion-icon>
     </button>
     <button ion-item  icon-right detail-none menuClose="user-menu" (click)="onLogout()">

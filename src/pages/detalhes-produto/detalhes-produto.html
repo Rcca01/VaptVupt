@@ -11,6 +11,7 @@
       <ion-card-content>
         <ion-card-title>
           {{produto?.title}}
+          <ion-icon (click)="onChatCreate(produto.dono)" item-end name="chatbubbles"></ion-icon>
           </ion-card-title>
         <p>{{produto?.description}}</p>
         <p>Cadastrado em: {{produto?.timestamp | date:'dd/MM/yyyy hh:mm'}}</p>

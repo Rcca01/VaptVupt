@@ -6,6 +6,7 @@ import { Produto } from '../../models/produto.models';
 
 import * as firebase from 'firebase';
 import { ProdutoProvider } from '../../providers/produto/produto';
+import { AuthProvider } from '../../providers/auth/auth.provider';
 
 @Component({
   selector: 'page-produto',
@@ -15,7 +16,6 @@ export class ProdutoPage {
 
   produtoForm:FormGroup;
   produto:Produto;
-  uidUser:string;
 
   constructor(
     public navCtrl: NavController, 
@@ -23,7 +23,8 @@ export class ProdutoPage {
     private formBuilder:FormBuilder,
     private loadingCtrl:LoadingController,
     private alertCtrl:AlertController,
-    private providerProduto:ProdutoProvider
+    private providerProduto:ProdutoProvider,
+    public authProvider: AuthProvider
   ) {
     this.produtoForm = this.formBuilder.group({
       title:['',[Validators.required]],
@@ -32,21 +33,25 @@ export class ProdutoPage {
   }
 
   ionViewDidLoad() {
-    this.uidUser = this.navParams.get('uid');
   }
 
   registrarProduto(){
     let loading:Loading = this.showLoading();
     this.produto = this.produtoForm.value;
     this.produto.timestamp = firebase.firestore.FieldValue.serverTimestamp();
-    this.produto.dono = this.uidUser;
-    this.providerProduto.createProduto(this.produto,this.uidUser).then(()=>{
-      loading.dismiss();
-      this.showAlert('Produto Registrado');
-    }).catch(()=>{
-      loading.dismiss();
-      this.showAlert('Produto não registrado');
-    })
+    this.authProvider.currentUserObservable
+      .first()
+      .subscribe((userLogged)=>{
+        this.produto.dono = userLogged.uid;
+        this.providerProduto.createProduto(this.produto,this.produto.dono).then(()=>{
+          loading.dismiss();
+          this.showAlert('Produto Registrado');
+        }).catch(()=>{
+          loading.dismiss();
+          this.showAlert('Produto não registrado');
+        })
+    });
+    
   }
 
   private showLoading():Loading{

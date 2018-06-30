@@ -1,0 +1,24 @@
+<ion-header>
+    <modify-logged-header [title]="pageTitle | capitalize:true" [user]="userChat" ></modify-logged-header>
+  
+  </ion-header>
+  
+  
+  <ion-content padding scrollDownOnLoad="true">
+    <box-message *ngFor="let message of listMessagesChat" [sendMessage]="message" [sendFor]="(userLogged.id === message.uid)">{{ message.text }}</box-message>
+    <progress-bar *ngIf="progressUpload" [progress]="progressUpload"></progress-bar>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+      <ion-item no-lines>
+        <button color="dark" ion-button item-start (click)="voltarChat()" round >
+          <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+        <ion-input type="text" placeholder="Menssage..." [(ngModel)]="newMessage" (keyup.enter)="sendMessage(newMessage,'texto'); newMessage=''"></ion-input>
+        <button color="dark" ion-button item-end (click)="sendMessage(newMessage,'texto'); newMessage=''" round >
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-toolbar>
+  </ion-footer>

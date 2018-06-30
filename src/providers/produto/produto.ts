@@ -32,14 +32,16 @@ export class ProdutoProvider {
             id: change.doc.id,
             timestamp: change.doc.data().timestamp,
             title: change.doc.data().title,
-            description: change.doc.data().description
+            description: change.doc.data().description,
+            dono: change.doc.data().dono
           })
         }else if(change.type === 'modified'){
           listaProdutos.forEach((produto:Produto)=>{
             if(change.doc.id === produto.id){
               produto.timestamp = change.doc.data().timestamp,
               produto.title = change.doc.data().title,
-              produto.description = change.doc.data().description
+              produto.description = change.doc.data().description,
+              produto.dono = change.doc.data().dono
             }
           })
         }else{

@@ -1,3 +1,5 @@
+import { HomePage } from './../../pages/home/home';
+import { ListaChatPage } from './../../pages/lista-chat/lista-chat';
 import { Component, Input } from '@angular/core';
 import { BaseComponent } from '../base.component';
 import { AlertController, App, MenuController } from 'ionic-angular';
@@ -24,6 +26,14 @@ export class UserMenuComponent extends BaseComponent{
 
   onProfile():void{
     this.navCtrl.push(PerfilPage);
+  }
+
+  onChat(){
+    this.navCtrl.setRoot(ListaChatPage);
+  }
+
+  onHomePage(){
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

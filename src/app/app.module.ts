@@ -1,3 +1,7 @@
+import { Vibration } from '@ionic-native/vibration';
+import { BoxMessageComponent } from './../components/box-message/box-message';
+import { ChatPage } from './../pages/chat/chat';
+import { ListaChatPage } from './../pages/lista-chat/lista-chat';
 import { EditarProdutoPage } from './../pages/editar-produto/editar-produto';
 import { ProdutoPage } from './../pages/produto/produto';
 import { PerfilPage } from './../pages/perfil/perfil';
@@ -28,6 +32,8 @@ import { UserInfoComponent } from '../components/user-info/user-info';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { ProdutoProvider } from '../providers/produto/produto';
 import { DetalhesProdutoPage } from '../pages/detalhes-produto/detalhes-produto';
+import { ChatProvider } from '../providers/chat/chat';
+import { MessageProvider } from '../providers/message/message';
 
 var config = {
   apiKey: "AIzaSyARcvkxhjma2xuT_8vDLaLvUUm6RnApqFg",
@@ -46,13 +52,16 @@ var config = {
     UserMenuComponent,
     UserInfoComponent,    
     ProgressBarComponent,
+    BoxMessageComponent,
     HomePage,
     LoginPage,
     CadastroPage,
     PerfilPage,
     ProdutoPage,
     DetalhesProdutoPage,
-    EditarProdutoPage
+    EditarProdutoPage,
+    ListaChatPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +80,9 @@ var config = {
     PerfilPage,
     ProdutoPage,
     DetalhesProdutoPage,
-    EditarProdutoPage
+    EditarProdutoPage,
+    ListaChatPage,
+    ChatPage
   ],
   providers: [
     StatusBar,
@@ -82,7 +93,10 @@ var config = {
     AuthProvider,
     AngularFireAuth,
     OneSignal,
-    ProdutoProvider
+    Vibration,
+    ProdutoProvider,
+    ChatProvider,
+    MessageProvider
   ]
 })
 export class AppModule {}

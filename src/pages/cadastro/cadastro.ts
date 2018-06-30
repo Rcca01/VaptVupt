@@ -8,6 +8,7 @@ import { HomePage } from '../home/home';
 
 import { AuthProvider } from './../../providers/auth/auth.provider';
 import { UserProvider } from './../../providers/user/user.provider';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the CadastroPage page.
@@ -64,7 +65,7 @@ export class CadastroPage {
           user.pushonesignal = '';
           this.userProvider.createUser(user,authState.uid).then(()=>{
             this.showAlert('Registro efetuado');
-            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.setRoot(LoginPage);
             loading.dismiss();
           }).catch((error:any)=>{
             console.log(error);

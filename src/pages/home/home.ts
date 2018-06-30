@@ -9,13 +9,6 @@ import { User } from '../../models/user.models';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DetalhesProdutoPage } from '../detalhes-produto/detalhes-produto';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -37,7 +30,6 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.listaProdutosObservable = this.produtoProvider.getProdutos();
-    this.user = this.navParams.get('usuario');
   }
 
   novoProduto(){

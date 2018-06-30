@@ -1,0 +1,28 @@
+<ion-header>
+    <modify-logged-header [title]="'Contatos' | capitalize:true"></modify-logged-header>
+  </ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+      <ion-item-sliding *ngFor="let chat of chatsLista | async, let i = index">
+        <button class="button-item" ion-item  (click)="openChat(chat.id)">
+          <ion-avatar item-start>
+            <img [src]="chat.photo || 'assets/imgs/no-photo.jpg'">
+          </ion-avatar>
+          <h2>{{chat.title}}</h2>
+          <p *ngIf="chat.lastMessage; else customMessage">{{chat.timestamp | date:'hh:mm'}} - {{chat.lastMessage}}</p>
+          <ng-template #customMessage> 
+            <p>No messages</p>
+          </ng-template>
+          <ion-badge *ngIf="chat.ler" item-end>{{chat.ler}}</ion-badge>
+        </button>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="apagarChat(chat, i)">
+            <ion-icon name="trash"></ion-icon>
+            deletar
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+</ion-content>

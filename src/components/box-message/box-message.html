@@ -1,0 +1,6 @@
+<div class="text" [ngClass]="{'background-messager':sendFor}">
+  <div>
+    <p>{{sendMessage.text}}</p>
+    <p class="timestamp">{{sendMessage.timestamp | date:'dd/MM/yyyy hh:mm'}}</p>
+  </div>
+</div>
