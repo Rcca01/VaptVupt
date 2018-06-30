@@ -93,7 +93,7 @@ export class UserProvider extends BaseProvider {
   }
 
   editUser(user:{nome:string,username:string,photo:string},uid:string):Promise<void>{
-    return this.getDadosUserObject(uid).set(user);
+    return this.getDadosUserObject(uid).update(user);
   }
 
   uploadPhoto(file:File, uidUser:string){

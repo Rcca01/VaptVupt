@@ -35,6 +35,7 @@ export class PerfilPage {
     this.authProvider.currentUserObservable.subscribe((infoUser)=>{
       let user = this.userProvider.getDadosUser(infoUser.uid).then((user)=>{
         this.currentUser = <User>user.data();
+        this.currentUser.uid = infoUser.uid;
         console.log(<User>user.data());
       })
     });
@@ -45,7 +46,7 @@ export class PerfilPage {
     if(this.photoAtual){
       this.authProvider.currentUserObservable.subscribe((user:User)=>{
         if(user){
-          let result =  this.userProvider.uploadPhoto(this.photoAtual,user.id);
+          let result =  this.userProvider.uploadPhoto(this.photoAtual,user.uid);
           result.on('state_changed',(snapshot:firebase.storage.UploadTaskSnapshot)=>{
             this.progressUpload = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)*100);
           }, (error:Error)=>{
@@ -69,7 +70,7 @@ export class PerfilPage {
       nome: this.currentUser.nome,
       username: this.currentUser.username,
       photo: photoUrl || this.currentUser.photo || ''
-    },this.currentUser.id).then(()=>{
+    },this.currentUser.uid).then(()=>{
       this.canEdit = false;
       this.photoAtual = undefined;
       this.progressUpload = 0;

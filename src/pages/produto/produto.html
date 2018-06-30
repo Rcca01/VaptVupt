@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar color="dark">
+      <ion-title>Produto</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="registrarProduto()" [formGroup]="produtoForm">
+    <ion-item>
+      <ion-label floating>Titulo</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descrição</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <button ion-button full color="dark" type="submit" [disabled]="produtoForm.invalid">Registrar</button>
+  </form>
+</ion-content>

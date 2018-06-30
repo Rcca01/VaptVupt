@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar color="dark">
+      <ion-title>Detalhes Produto</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+
+<ion-content padding>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          {{produto?.title}}
+          </ion-card-title>
+        <p>{{produto?.description}}</p>
+        <p>Cadastrado em: {{produto?.timestamp | date:'dd/MM/yyyy hh:mm'}}</p>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

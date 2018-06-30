@@ -54,9 +54,12 @@ export class LoginPage {
         .update({onesignal:ids.userId,pushonesignal:ids.pushToken}).then(()=>{          
           this.user = user;
           loading.dismiss();
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot(HomePage,{
+            usuario:this.user
+          });
         }).catch();
       });
+      loading.dismiss();
     }).catch((error:any)=>{
       console.log(error);
       loading.dismiss();

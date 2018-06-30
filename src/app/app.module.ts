@@ -1,3 +1,5 @@
+import { EditarProdutoPage } from './../pages/editar-produto/editar-produto';
+import { ProdutoPage } from './../pages/produto/produto';
 import { PerfilPage } from './../pages/perfil/perfil';
 import { OneSignal } from '@ionic-native/onesignal';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +26,8 @@ import { CapitalizePipe } from '../pipes/capitalize/capitalize.pipe';
 import { UserMenuComponent } from '../components/user-menu/user-menu';
 import { UserInfoComponent } from '../components/user-info/user-info';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { ProdutoProvider } from '../providers/produto/produto';
+import { DetalhesProdutoPage } from '../pages/detalhes-produto/detalhes-produto';
 
 var config = {
   apiKey: "AIzaSyARcvkxhjma2xuT_8vDLaLvUUm6RnApqFg",
@@ -45,7 +49,10 @@ var config = {
     HomePage,
     LoginPage,
     CadastroPage,
-    PerfilPage
+    PerfilPage,
+    ProdutoPage,
+    DetalhesProdutoPage,
+    EditarProdutoPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,10 @@ var config = {
     HomePage,
     LoginPage,
     CadastroPage,
-    PerfilPage
+    PerfilPage,
+    ProdutoPage,
+    DetalhesProdutoPage,
+    EditarProdutoPage
   ],
   providers: [
     StatusBar,
@@ -71,7 +81,8 @@ var config = {
     BaseProvider,
     AuthProvider,
     AngularFireAuth,
-    OneSignal
+    OneSignal,
+    ProdutoProvider
   ]
 })
 export class AppModule {}
